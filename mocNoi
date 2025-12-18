@@ -1,1 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+typedef struct Node {
+    int data;
+    struct Node *left;
+    struct Node *right;
+} Node;
+
+Node* initTree() {
+    return NULL;
+}
+
+int isEmpty(Node *root) {
+    return root == NULL;
+}
+
+Node* createNode(int x) {
+    Node *p = (Node*)malloc(sizeof(Node));
+    if (p == NULL) return NULL;
+    p->data = x;
+    p->left = NULL;
+    p->right = NULL;
+    return p;
+}
+
+void insertLeft(Node *p, int x) {
+    if (p == NULL) {
+        printf("khong ton tai!\n");
+        return;
+    }
+    if (p->left != NULL) {
+        printf("khong ton tai!\n");
+        return;
+    }
+    p->left = createNode(x);
+}
+
+void insertRight(Node *p, int x) {
+    if (p == NULL) {
+        printf("khong ton tai!\n");
+        return;
+    }
+    if (p->right != NULL) {
+        printf("da ton tai!\n");
+        return;
+    }
+    p->right = createNode(x);
+}
+
+void truoc(Node *root) {
+    if (root == NULL) return;
+    printf("%d ", root->data);
+    truoc(root->left);
+    truoc(root->right);
+}
+
+void giua(Node *root) {
+    if (root == NULL) return;
+    giua(root->left);
+    printf("%d ", root->data);
+    giua(root->right);
+}
+
+
+void sau(Node *root) {
+    if (root == NULL) return;
+    sau(root->left);
+    sau(root->right);
+    printf("%d ", root->data);
+}
+
+int main() {
+    Node *root = initTree();
+
+    root = createNode(1);
+    
